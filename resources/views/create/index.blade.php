@@ -18,7 +18,7 @@ if (!empty($_POST['title']) && !empty($_POST['content'])) {
     @if (!empty($_POST))
         @include('templates.messages.error_message', ['message' => $message]);
     @endif
-    <form action="{{ route('post.store', ['user' => $user['name']]) }}" method="POST">
+    <form action="{{ route('post.store', ['user' => $user['id']]) }}" method="POST">
         @csrf
         <div class="mt-8 max-w-md">
             <div class="grid grid-cols-1 gap-6">

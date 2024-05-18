@@ -41,20 +41,19 @@ class PostController extends Controller
         return view('create.index', ['title' => 'Добавить пост', 'cutString' => [$this, 'cutString'], 'menu' => $this->getMenu(), 'user' => $user]);
     }
 
-    public function store(Request $request, $user)
+    public function store(Request $request, $userId)
     {
         $title = $request->input('title');
-        $author = $user;
         $content = $request->input('content');
-        Post::insert([
+        Post::create([
             'title' => $title,
-            'author' => $author,
+            'user_id' => $userId,
             'content' => $content,
         ]);
 
         info('Добавлен новый пост', [
             'title' => $title,
-            'author' => $author,
+            'author' => $userId,
             'content' => $content,
         ]);
 
@@ -64,7 +63,6 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $user = Auth::user() ?? '';
-
         return view('post.index', ['title' => $post['title'], 'cutString' => [$this, 'cutString'], 'menu' => $this->getMenu(), 'post' => $post, 'user' => $user]);
     }
     public function edit($postId)

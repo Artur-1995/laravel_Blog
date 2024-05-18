@@ -27,7 +27,6 @@ class LoginController extends Controller
 
     public function index($message = null, ...$user)
     {
-
         $user = Auth::user()->name ?? false;
 
         if ($user) {
@@ -40,18 +39,16 @@ class LoginController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
         $user = User::where('email', $email)->first();
-
+        
         if ($user) {
 
             if (Hash::check($password, $user->password)) {
                 $message = 'Вы авторизовались';
                 Auth::login($user);
                 session(['user' => $user]);
-
                 return $this->index($message, $user);
             } else {
                 $message = 'Неверный пароль';
-
                 return $this->index($message);
             }
         } else {

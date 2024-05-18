@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\CommentPost;
 
 class Comment extends Model
 {
@@ -11,7 +10,9 @@ class Comment extends Model
     protected $primaryKey = 'id'; // Первичный ключ
 
     protected $fillable = [
-        'author',
+        'post_id',
+        'comment_id',
+        'user_id',
         'content',
         'like_count',
         'dislike_count',

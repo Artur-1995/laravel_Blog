@@ -9,7 +9,6 @@
                 </span>
             @endif
         </div>
-
     </div>
 
     <a class="text-gray-500 hover:text-orange" href="{{ route('comment.index', ['postId' => $post['id']]) }}">

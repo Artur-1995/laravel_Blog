@@ -8,7 +8,9 @@ $user = Auth::user()->name ?? '';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="/assets/css/tailwind.css" rel="stylesheet" />
+    
     <title>{{ $title }}</title>
+    <link href="/favicon"/>
 </head>
 
 <body class="bg-white text-gray-600 font-sans leading-normal text-base tracking-normal flex min-h-screen flex-col">

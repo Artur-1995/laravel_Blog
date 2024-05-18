@@ -10,8 +10,10 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('author', 255);
-            $table->text('content');
+            $table->string('post_id', 255)->nullable();
+            $table->string('comment_id', 255)->nullable();
+            $table->string('user_id', 255)->nullable();
+            $table->text('content')->nullable();
             $table->integer('like_count')->nullable();
             $table->integer('dislike_count')->nullable();
             $table->enum('on_the', ['post', 'comment']);

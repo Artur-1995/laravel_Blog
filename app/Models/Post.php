@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\CommentPost;
 
 class Post extends Model
 {
+    use HasFactory;
     protected $fillable = [
+        'user_id',
         'title',
         'content',
         'like_count',
@@ -15,12 +17,8 @@ class Post extends Model
         'created_at',
         'updated_at',
     ];
-    public function comments($column = '')
+    public function comments()
     {
-        $comments = $this->belongsToMany(Comment::class);
-        if ($column != '') {
-            $comments->orderByDesc($column);
-        }
-        return $comments;
+        return $this->hasMany(Comment::class);
     }
 }

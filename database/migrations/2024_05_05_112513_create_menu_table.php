@@ -10,8 +10,8 @@ class CreateMenuTable extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 255)->unique();
-            $table->string('path', 255)->unique();
+            $table->string('name', 255);
+            $table->string('path', 255);
             $table->string('sort', 255);
             $table->timestamps();
         });

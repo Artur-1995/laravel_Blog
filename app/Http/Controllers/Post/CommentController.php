@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Menu;
 use App\Models\Comment;
-use App\Models\CommentPost;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -43,32 +42,23 @@ class CommentController extends Controller
             'user' => Auth::user()->name ?? false,
         ]);
     }
-    public function store(Request $request, $postId, $onTheComment = false)
+    public function store(Request $request, $postId, $commentId = false)
     {
-        $author = Auth::user()->name;
+        $userId = Auth::user()->id;
         $content = $request->input('comment');
-        $on_the = $onTheComment ? 'comment' : 'post';
-        $commentId = Comment::insertGetId([
-            'author' => $author,
+        $on_the = $commentId ? 'comment' : 'post';
+        
+        Comment::create([
+            'post_id' => $postId,
+            'comment_id' => $commentId,
+            'user_id' => $userId,
             'content' => $content,
             'on_the' => $on_the,
-
         ]);
-        if ($on_the == 'post') {
-            CommentPost::insert([
-                'post_id' => $postId,
-                'comment_id' => $commentId,
-            ]);
-        } else {
-            CommentPost::insert([
-                'post_id' => $onTheComment,
-                'comment_id' => $commentId,
-            ]);
-        }
+
         info('Добавлен новый комментарий', [
-            'author' => $author,
+            'userId' => $userId,
             'postId' => $postId,
-            'commentId' => $commentId,
             'on_the' => $on_the,
         ]);
 

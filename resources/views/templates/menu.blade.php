@@ -3,7 +3,7 @@
 
 foreach ($menu as $item) {
 
-    $title = call_user_func($cutString, $item['title']);    
+    $title = call_user_func($cutString, $item['name']);    
     $href = $item['path'];
     $class = Route::is($href) ? "text-orange cursor-default" : "text-gray-600 hover:text-orange";
         ?>
