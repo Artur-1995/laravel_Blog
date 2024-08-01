@@ -1,5 +1,5 @@
-<div class="card py-5">
-    <span class="dots">Комментарии:</span>
+<div class="card py-5" style="border: none;">
+    <span class="dots" style="padding-left: 3%;">Комментарии:</span>
     <div class="action d-flex justify-content-between mt-2 align-items-center">
 
         <div class="reply py-4 px-10">
@@ -12,7 +12,6 @@
                     padding-left: 0.2rem;
                     border-width: 0.2 px;
                     padding-inline-end: 4px;
-
                     ">
                 <button type="submit">отправить</button>
             </form>

@@ -22,6 +22,8 @@ use App\Http\Controllers\Post\CommentController;
 
 Route::redirect('/', 'login');
 
+Route::post('contact', 'Controller@send')->name('contact');
+
 // Маршруты для работы с постами
 Route::get('posts', [PostController::class, 'index'])->name('posts.index'); // Метод просмотра страницы списка постов
 Route::get('post/{postId}', [PostController::class, 'show'])->name('post.show'); // Метод просмотра страницы поста
@@ -31,7 +33,7 @@ Route::get('orderby/popular', [PostController::class, 'popular'])->name('post.po
 Route::get('orderby/created', [PostController::class, 'created'])->name('post.created');
 
 // Пути для работы с комментариями
-Route::get('posts/{postId}/comments', [CommentController::class, 'index'])->name('comment.index'); // Метод просмотра комментариев
+Route::get('comments/{postId}', [CommentController::class, 'index'])->name('comment.index'); // Метод просмотра комментариев
 Route::get('posts/{postId}/comments/orderby/popular', [CommentController::class, 'popular'])->name('comment.popular'); // Метод сортировки комментариев по популярности
 Route::get('posts/{postId}/comments/orderby/created', [CommentController::class, 'created'])->name('comment.created'); // Метод сортировки комментариев по дате создания
 Route::get('posts/{postId}/comments/{commentId}/like', [CommentController::class, 'like'])->name('comment.like'); // Метод добавление лайков к комментарию

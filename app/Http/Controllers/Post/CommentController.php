@@ -40,6 +40,7 @@ class CommentController extends Controller
             'comments' => $comments,
             'postId' => $postId,
             'user' => Auth::user()->name ?? false,
+            'title' => 'Комментарии',
         ]);
     }
     public function store(Request $request, $postId, $commentId = false)
@@ -47,7 +48,7 @@ class CommentController extends Controller
         $userId = Auth::user()->id;
         $content = $request->input('comment');
         $on_the = $commentId ? 'comment' : 'post';
-        
+
         Comment::create([
             'post_id' => $postId,
             'comment_id' => $commentId,
