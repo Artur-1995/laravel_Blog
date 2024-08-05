@@ -18,7 +18,7 @@ $user = Auth::user()->name ?? '';
 
 <body class="bg-white text-gray-600 font-sans leading-normal text-base tracking-normal flex min-h-screen flex-col">
     <div class="wrapper flex flex-1 flex-col bg-gray-100">
-        <header class="flex-1 container mx-auto bg-white overflow-hidden px-4 sm:px-6">
+        <header class="container mx-auto bg-white overflow-hidden px-4 sm:px-6">
             <div class="border-b">
                 <div
                     class="container mx-auto block overflow-hidden px-4 sm:px-6 sm:flex sm:justify-between sm:items-center py-4 space-y-4 sm:space-y-0">
