@@ -5,8 +5,10 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\Post\PostController;
+use App\Http\Controllers\Goods\GoodsController;
 use App\Http\Controllers\Post\CommentController;
-
+use App\Http\Controllers\Product\ProductsController;
+use App\Http\Controllers\Product\ProductPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +53,17 @@ Route::get('login/login.logout', [LoginController::class, 'logout'])->name('logi
 
 // методы для Авторизованных пользователей
 Route::middleware('auth')->prefix('user')->group(function () {
+    // Маршруты для работы с товарами
+    Route::get('goods', [GoodsController::class, 'index'])->name('goods.index'); // Метод просмотра страницы создания поста
+    Route::get('products', ProductsController::class)->name('products'); // Метод просмотра страницы создания поста
+    Route::get('products/{offer_id}/{product_id?}/{visibility?}', ProductPageController::class)->name('product.index'); // Метод просмотра страницы создания поста
+
+    // Route::get('goods/create', [GoodsController::class, 'create'])->name('goods.create'); // Метод просмотра страницы создания поста
+    // Route::post('goods/{user}/store', [GoodsController::class, 'store'])->name('goods.store'); // Метод создания постов
+    // Route::get('goods/{goodsId}/edit', [GoodsController::class, 'edit'])->name('goods.edit'); // Метод просмотра страницы изменения постов
+    // Route::post('goods/{goodsId}/update', [GoodsController::class, 'update'])->name('goods.update'); // Метод изменения постов
+    // Route::get('goods/{goodsId}/delete', [GoodsController::class, 'delete'])->name('goods.delete'); // Метод удаления постов
+
     // Методы для получения токена
     Route::get('account', [UserController::class, 'index'])->name('account'); // Метод просмотра личного кабинета
     Route::get('getToken/{userId}', [UserController::class, 'store'])->name('getToken'); // Метод создания токена

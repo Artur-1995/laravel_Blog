@@ -7,11 +7,6 @@ Breadcrumbs::register('posts.index', function ($breadcrumbs) {
     $breadcrumbs->push('Посты', route('posts.index'));
 });
 
-// Breadcrumbs::for('post.show', function ($trail) {
-//     $trail->parent('posts.index');
-//     $trail->push('Пост', route('post.show'));
-// });
-
 Breadcrumbs::register('post', function ($breadcrumbs, $postId) {
     $breadcrumbs->parent('posts.index');
     $breadcrumbs->push(Post::find($postId)->title, route('post.show', $postId));
@@ -21,6 +16,14 @@ Breadcrumbs::register('comment', function ($breadcrumbs, $postId) {
     $breadcrumbs->push('Комментарий', route('comment.index', $postId));
 });
 
+Breadcrumbs::register('products', function ($breadcrumbs) {
+    // $breadcrumbs->parent('<Parent route>’');
+    $breadcrumbs->push('Товары', route('products'));
+});
+Breadcrumbs::register('product', function ($breadcrumbs, $offer_id) {
+    $breadcrumbs->parent('products');
+    $breadcrumbs->push($offer_id, route('product.index', $offer_id));
+});
 
 
 // $breadcrumbs->parent('<Parent route>’');

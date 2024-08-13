@@ -39,7 +39,9 @@ $user = Auth::user()->name ?? '';
                                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                                     <div class="navbar-nav">
                                         <a class="nav-link active" aria-current="page"
-                                            href="{{ route('posts.index') }}">Home</a>
+                                            href="{{ route('posts.index') }}">Post</a>
+                                        <a class="nav-link active" aria-current="page"
+                                            href="{{ route('products') }}">Товары</a>
                                         <a class="nav-link" href="#">Features</a>
                                         <a class="nav-link" href="#">Pricing</a>
                                         <a class="nav-link disabled" href="#" tabindex="-1"
@@ -64,4 +66,9 @@ $user = Auth::user()->name ?? '';
                 </section>
             </div>
         </header>
-        @yield('content')
+        <main class="flex-1 container mx-auto bg-white overflow-hidden px-4 sm:px-6">
+            <div class="flex-grow-1 py-3 justify-content-between min-мh-100">
+                <h1 class="text-black text-3xl font-bold mb-4">
+                    {{ $title }}
+                </h1>
+                @yield('content')
